@@ -1,8 +1,8 @@
 import cv2
-from capture.base_capture import ImageCapture
+from capture.base_image_capture import BaseImageCapture
 from config.settings import CAMERA_IMAGE_PATH
 
-class CameraCapture(ImageCapture):
+class CameraCapture(BaseImageCapture):
     def capture(self):
         cap = cv2.VideoCapture(0)
         if not cap.isOpened():

@@ -1,1 +1,3 @@
-# Empty - this is to explicitly mark this directory as a Python package.
+from .hotkey_manager import HotkeyManager
+
+__all__ = ['HotkeyManager']

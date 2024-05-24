@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class ImageCapture(ABC):
+class BaseImageCapture(ABC):
     @abstractmethod
     def capture(self):
         pass

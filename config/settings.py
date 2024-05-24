@@ -9,7 +9,7 @@ CAPTURE_METHOD = 'screenshot'
 OPENAI_API_KEY = os.getenv('HIDDENGPT_OPENAI_API_KEY')
 if not OPENAI_API_KEY:
     raise ValueError("No HiddenGPT OpenAI API key found in environment variables")
-CHATGPT_MODEL = 'gpt-4'
+CHATGPT_MODEL = 'gpt-4o'
 CHATGPT_MAX_TOKENS = 1000
 
 # Hotkeys
