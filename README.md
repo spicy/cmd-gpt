@@ -47,7 +47,7 @@ HiddenGPT/
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/HiddenGPT.git
+   git clone https://github.com/spicy/HiddenGPT.git
    cd HiddenGPT
    ```
 
@@ -66,7 +66,7 @@ HiddenGPT/
 
 4. **Set up environment variables**:
 
-   Create a \`.env\` file in the project root directory and add your OpenAI API key:
+   Create a `.env` file in the project root directory and add your OpenAI API key:
 
    ```env
    HIDDENGPT_OPENAI_API_KEY=your_openai_api_key
@@ -90,7 +90,7 @@ HiddenGPT/
 
 ## Configuration
 
-The configuration settings are located in `config/settings.py`:
+The configuration settings are located in `config/settings.py`. Please modify these as desired
 
 ```python
 import os
@@ -98,13 +98,13 @@ import os
 # Configuration settings
 SCREENSHOT_PATH = 'screenshot.png'
 CAMERA_IMAGE_PATH = 'camera_image.jpg'
-CAPTURE_METHOD = 'screenshot'
+CAPTURE_METHOD = 'screenshot' # Options: 'screenshot' or 'camera'
 
 # ChatGPT
 OPENAI_API_KEY = os.getenv('HIDDENGPT_OPENAI_API_KEY')
 if not OPENAI_API_KEY:
     raise ValueError("No HiddenGPT OpenAI API key found in environment variables")
-CHATGPT_MODEL = 'gpt-4'
+CHATGPT_MODEL = 'gpt-4o'
 CHATGPT_MAX_TOKENS = 1000
 
 # Hotkeys
