@@ -17,29 +17,30 @@ HiddenGPT is a Python terminal application designed to capture images using scre
 HiddenGPT/
 │
 ├── capture/
-│   ├── base_capture.py         - Defines the abstract base class for image capture methods.
-│   ├── camera_capture.py       - Implements the image capture functionality using a camera.
-│   ├── screenshot_capture.py   - Implements the image capture functionality using screenshots.
-│
-├── core/
-│   ├── capture_service.py      - Manages the image capture process using the appropriate capture method.
-│   ├── chunk_service.py        - Handles the splitting of text content into chunks.
-│   ├── display_service.py      - Manages the display and navigation of text chunks.
-│   ├── processor.py            - Orchestrates the capture, processing, and display of images and text.
-│
-├── services/
-│   ├── chatgpt_service.py      - Implements interaction with OpenAI's GPT models.
-│   ├── ocr_service.py          - Implements OCR functionality to extract text from images.
-│   ├── interfaces.py           - Defines interfaces for the OCR and GPT Response services.
+│   ├── base_image_capture.py    - Defines the abstract base class for image capture methods.
+│   ├── camera_capture.py        - Implements the image capture functionality using a camera.
+│   ├── screenshot_capture.py    - Implements the image capture functionality using screenshots.
 │
 ├── config/
-│   ├── settings.py             - Contains configuration settings and environment variables.
+│   ├── settings.py              - Contains configuration settings and environment variables.
+│
+├── core/
+│   ├── capture_service.py       - Manages the image capture process using the appropriate capture method.
+│   ├── chunk_service.py         - Handles the splitting of text content into chunks.
+│   ├── display_service.py       - Manages the display and navigation of text chunks.
+│   ├── interfaces.py            - Defines interfaces for the Capture, Chunk, and Display services.
+│   ├── processor.py             - Orchestrates the capture, processing, and display of images and text.
+│
+├── services/
+│   ├── chatgpt_service.py       - Implements interaction with OpenAI's GPT models.
+│   ├── ocr_service.py           - Implements OCR functionality to extract text from images.
+│   ├── interfaces.py            - Defines interfaces for the OCR and GPT Response services.
 │
 ├── utils/
-│   ├── hotkeys.py              - Manages keyboard hotkeys for interacting with the application.
+│   ├── hotkey_manager.py        - Manages keyboard hotkeys for interacting with the application.
 │
-├── main.py                     - Entry point for the application, setting up and running the processor and hotkeys.
-├── requirements.txt            - Lists the Python dependencies required for the project.
+├── main.py                      - Entry point for the application, setting up and running the processor and hotkeys.
+├── requirements.txt             - Lists the Python dependencies required for the project.
 ```
 
 ## Installation
