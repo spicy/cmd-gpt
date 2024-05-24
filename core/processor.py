@@ -1,16 +1,14 @@
 import os
 import platform
 import subprocess
-from core.capture_service import CaptureService
-from core.chunk_service import ChunkService
-from core.display_service import DisplayService
 from services.interfaces import IOCRService, IResponseService
+from core.interfaces import ICaptureService, IChunkService, IDisplayService
 
 class Processor:
-    def __init__(self, ocr_service: IOCRService, response_service: IResponseService, hotkeys):
-        self.capture_service = CaptureService()
-        self.chunk_service = ChunkService()
-        self.display_service = DisplayService(hotkeys)
+    def __init__(self, capture_service: ICaptureService, chunk_service: IChunkService, display_service: IDisplayService, ocr_service: IOCRService, response_service: IResponseService):
+        self.capture_service = capture_service
+        self.chunk_service = chunk_service
+        self.display_service = display_service
         self.ocr_service = ocr_service
         self.response_service = response_service
 
@@ -51,7 +49,7 @@ class Processor:
             response = self.response_service.get_response(reply)
 
             response_chunks, response_labels = self.chunk_service.chunk_content(response, label="Response")
-            self.display_service.update_chunks(response_chunks, response_labels)
+            self.display_service.insert_reply_chunks(response_chunks, response_labels)
             self.display_service.display_chunk()
 
         except Exception as e:

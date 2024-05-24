@@ -1,6 +1,7 @@
 import os
+from core.interfaces import IDisplayService
 
-class DisplayService:
+class DisplayService(IDisplayService):
     def __init__(self, hotkeys):
         self.hotkeys = hotkeys
         self.current_chunk_index = 0
@@ -11,6 +12,12 @@ class DisplayService:
         self.chunks = chunks
         self.chunk_labels = labels
         self.current_chunk_index = 0
+
+    def insert_reply_chunks(self, reply_chunks, reply_labels):
+        insert_position = self.current_chunk_index + 1
+        self.chunks = self.chunks[:insert_position] + reply_chunks + self.chunks[insert_position:]
+        self.chunk_labels = self.chunk_labels[:insert_position] + reply_labels + self.chunk_labels[insert_position:]
+        self.current_chunk_index = insert_position  # Focus on the first reply chunk
 
     def display_chunk(self):
         if self.chunks:

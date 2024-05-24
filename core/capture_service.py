@@ -1,8 +1,9 @@
 from config.settings import CAPTURE_METHOD
 from capture.screenshot_capture import ScreenshotCapture
 from capture.camera_capture import CameraCapture
+from core.interfaces import ICaptureService
 
-class CaptureService:
+class CaptureService(ICaptureService):
     def __init__(self):
         self.capture_method = self._get_capture_method()
 
