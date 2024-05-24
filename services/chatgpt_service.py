@@ -1,14 +1,15 @@
 import openai
-from config import OPENAI_API_KEY, CHATGPT_MODEL, CHATGPT_MAX_TOKENS
+from config.settings import OPENAI_API_KEY, CHATGPT_MODEL, CHATGPT_MAX_TOKENS
+from services.interfaces import IResponseService
 
-class ChatGPT:
-    def __init__(self, api_key, model=CHATGPT_MODEL, max_tokens=CHATGPT_MAX_TOKENS):
-        openai.api_key = api_key
-        self.model = model
-        self.max_tokens = max_tokens
+class ChatGPTService(IResponseService):
+    def __init__(self):
+        openai.api_key = OPENAI_API_KEY
+        self.model = CHATGPT_MODEL
+        self.max_tokens = CHATGPT_MAX_TOKENS
         self.conversation_history = []
 
-    def get_response(self, prompt):
+    def get_response(self, prompt: str) -> str:
         self.conversation_history.append({"role": "user", "content": prompt})
 
         response = openai.ChatCompletion.create(
@@ -25,5 +26,4 @@ class ChatGPT:
         return response_content
 
     def reset_conversation(self):
-        """Resets the conversation history."""
         self.conversation_history = []

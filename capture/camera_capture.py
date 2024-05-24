@@ -1,6 +1,6 @@
 import cv2
 from capture.base_capture import ImageCapture
-from config import CAMERA_IMAGE_PATH
+from config.settings import CAMERA_IMAGE_PATH
 
 class CameraCapture(ImageCapture):
     def capture(self):
