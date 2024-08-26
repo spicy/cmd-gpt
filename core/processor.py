@@ -19,8 +19,10 @@ class Processor:
             print("Image captured. Performing OCR...")
 
             extracted_text = self.ocr_service.extract_text(image_path)
+            ocr_data = self.ocr_service.extract_data(image_path)
+            
             print("Getting response...")
-            response = self.response_service.get_response(f"Answer the following questions based on the text. Think step by step: \n{extracted_text}")
+            response = self.response_service.get_response(f"Answer the following questions based on the text. Here's the extracted text:\n{extracted_text}\n\nAnd here's some additional OCR data:\n{ocr_data}")
 
             chunks, labels = self.chunk_service.chunk_content(response)
             self.display_service.update_chunks(chunks, labels)

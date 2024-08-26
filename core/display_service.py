@@ -1,4 +1,5 @@
 import os
+import platform
 from core.interfaces import IDisplayService
 
 class DisplayService(IDisplayService):
@@ -19,9 +20,15 @@ class DisplayService(IDisplayService):
         self.chunk_labels = self.chunk_labels[:insert_position] + reply_labels + self.chunk_labels[insert_position:]
         self.current_chunk_index = insert_position
 
+    def clear_screen(self):
+        if platform.system() == "Windows":
+            os.system("cls")
+        else:  # Unix/Linux/macOS
+            os.system("clear")
+
     def display_chunk(self):
         if self.chunks:
-            os.system('cls' if os.name == 'nt' else 'clear')
+            self.clear_screen()
             print(f"Chunk {self.current_chunk_index + 1} of {len(self.chunks)} ({self.chunk_labels[self.current_chunk_index]})\n")
             print(self.chunks[self.current_chunk_index])
             print(f"\n- - - Press '{self.hotkeys['next_chunk']}' for next chunk, '{self.hotkeys['prev_chunk']}' for previous chunk, '{self.hotkeys['capture']}' to start a new capture, '{self.hotkeys['reply']}' to reply to the current capture, or '{self.hotkeys['reset_conversation']}' to reset conversation. Press '{self.hotkeys['quit']}' to quit the program immediately.")
