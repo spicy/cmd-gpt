@@ -1,13 +1,8 @@
 import pytesseract
 from PIL import Image
 from services.interfaces import IOCRService
-import os
 
 class OCRService(IOCRService):
-    def __init__(self):
-        self.tesseract_cmd = self._get_tesseract_cmd()
-        pytesseract.pytesseract.tesseract_cmd = self.tesseract_cmd
-
     def extract_text(self, image_path: str) -> str:
         with Image.open(image_path) as img:
             custom_config = r'--oem 3 --psm 6'
