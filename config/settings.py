@@ -32,3 +32,6 @@ HOTKEYS = {
 }
 
 MAX_LINES_PER_CHUNK = 12
+
+# Custom prompt for LLM
+CUSTOM_PROMPT = "This is for a software engineer position in an interview. Answer the following"

@@ -1,4 +1,4 @@
-from config.settings import HOTKEYS
+from config.settings import HOTKEYS, CUSTOM_PROMPT
 from core.processor import Processor
 from core.capture_service import CaptureService
 from core.chunk_service import ChunkService
@@ -14,7 +14,7 @@ def main():
     display_service = DisplayService(HOTKEYS)
     ocr_service = OCRService()
     response_service: IResponseService = ChatGPTService()
-    processor = Processor(capture_service, chunk_service, display_service, ocr_service, response_service)
+    processor = Processor(capture_service, chunk_service, display_service, ocr_service, response_service, CUSTOM_PROMPT)
     hotkey_manager = HotkeyManager(HOTKEYS, processor)
     hotkey_manager.setup_hotkeys()
 

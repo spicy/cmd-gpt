@@ -5,12 +5,13 @@ from services.interfaces import IOCRService, IResponseService
 from core.interfaces import ICaptureService, IChunkService, IDisplayService
 
 class Processor:
-    def __init__(self, capture_service: ICaptureService, chunk_service: IChunkService, display_service: IDisplayService, ocr_service: IOCRService, response_service: IResponseService):
+    def __init__(self, capture_service: ICaptureService, chunk_service: IChunkService, display_service: IDisplayService, ocr_service: IOCRService, response_service: IResponseService, custom_prompt: str):
         self.capture_service = capture_service
         self.chunk_service = chunk_service
         self.display_service = display_service
         self.ocr_service = ocr_service
         self.response_service = response_service
+        self.custom_prompt = custom_prompt
 
     def capture_and_process(self):
         try:
@@ -20,9 +21,9 @@ class Processor:
 
             extracted_text = self.ocr_service.extract_text(image_path)
             ocr_data = self.ocr_service.extract_data(image_path)
-            
+
             print("Getting response...")
-            response = self.response_service.get_response(f"Answer the following questions based on the text. Here's the extracted text:\n{extracted_text}\n\nAnd here's some additional OCR data:\n{ocr_data}")
+            response = self.response_service.get_response(f"{self.custom_prompt} Here's the extracted text:\n{extracted_text}\n\nAnd here's some additional OCR data:\n{ocr_data}")
 
             chunks, labels = self.chunk_service.chunk_content(response)
             self.display_service.update_chunks(chunks, labels)
