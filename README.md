@@ -1,6 +1,6 @@
-# HiddenGPT
+# CmdGPT
 
-HiddenGPT is a Python terminal application designed to capture images using screenshots or a camera, perform Optical Character Recognition (OCR) on the captured images, and interact with GPT models (like GPT4o from OpenAI) to provide responses based on the extracted text. The application is modular and follows principles for maintainability and scalability.
+CmdGPT is a Python terminal application designed to capture images using screenshots or a camera, perform Optical Character Recognition (OCR) on the captured images, and interact with GPT models (like GPT4o from OpenAI) to provide responses based on the extracted text. The application is modular and follows principles for maintainability and scalability.
 
 ## Features
 
@@ -14,7 +14,7 @@ HiddenGPT is a Python terminal application designed to capture images using scre
 ## Folder Structure
 
 ```text
-HiddenGPT/
+CmdGPT/
 │
 ├── capture/
 │   ├── base_image_capture.py    - Defines the abstract base class for image capture methods.
